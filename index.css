@@ -1,18 +1,39 @@
 body {
-    display: flex; 
+
 }
 img{
     width: 100%;
 }
 
 #main-char {
-    width: 250px;
-    height: 250px;
-    background-color: aqua;
+    width: 500px;
+    height: 575px;
+    border: 1px solid aqua;
+    position: absolute;
+    left: 100px;
+    top: 200px;
 }
 
 #opponet {
-    width: 250px;
-    height: 250px;
-    background-color: lightcoral;
+    width: 500px;
+    height: 575px;
+    border: 1px solid lightcoral;
+    position: absolute;
+    left: 900px;
+    top: 200px; 
+    
+}
+
+#game-display {
+    display: flex;
+    flex-direction: column; 
+    width: 1500px;
+    height: 600px; 
+    
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #2a3e2c;
 }
