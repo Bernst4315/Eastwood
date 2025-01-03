@@ -4,10 +4,12 @@ const battleBtn = document.querySelector("#battle-btn");
 const attBtn = document.querySelector("#att-btn"); 
 const boss = document.getElementById("boss")
 let inBattle = false; 
+
 const mainChar = {
     name: "Adam",
     level: 1,
     hp: 10,
+    baseHp: 10,
     attack: 1,
 };
 
@@ -44,7 +46,7 @@ attBtn.addEventListener("click", () => {
             inBattle = false; 
             creature = {...monster};
             mainChar.level ++;
-            mainChar.hp ++;
+            mainChar.baseHp ++;
             mainChar.attack ++;
             currentChar = {...mainChar}
             console.log(mainChar.level)
@@ -60,7 +62,7 @@ boss.addEventListener("click", () => {
         alert("You're not strong enough")
     }else{
         alert("After months of training, you return to West Town a defeat the Serpent Knight")
-        alert("You are awarded the kingdom's treasure the fabled golden apple with the inscription 'To the Kalos'")
+        alert("You are awarded the town's treasure the fabled apple of solid gold with the inscription 'Te Kalliste'")
         alert("Huh.... I wonder what that means?")
     }
     

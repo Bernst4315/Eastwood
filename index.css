@@ -1,7 +1,7 @@
 body {
 
 }
-img{
+#background {
     width: 100%;
 }
 
@@ -36,4 +36,17 @@ nav {
     display: flex;
     justify-content: center;
     background-color: #2a3e2c;
+}
+
+#hero-stats, #creature-stats {
+    border: 1px solid red; 
+}
+
+#knight{
+    width: 350px;
+
+}
+
+#snake {
+    height: 450px;
 }

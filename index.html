@@ -8,10 +8,23 @@
 </head>
 <body>  
     <div id="game-display">
-        <img src="forest.jpg" alt="Background image of a dark forest">   
-        <div id="main-char">Main Char</div>
-        <div id="opponet">Opponet</div>
+        <img src="forest.jpg" alt="Background image of a dark forest" id="background">   
+        <div id="main-char">
+            <h1>Adam</h1>
+            <div id="hero-stats">
+                <p>hp: </p>
+                <img src="knight.jpg" alt="image of a knight" id="knight">
+            </div>
+        </div>
+        <div id="opponet">
+            <h1>Creature</h1>
+            <div id="creature-stats">
+                <p>hp: </p>
+                <img src="snake.jpg" alt="image of a snake" id="snake">
+            </div>
+        </div>
         <nav>
+            <button id="rest-btn">Rest</button>
             <button id="battle-btn">Battle</button>
             <button id="att-btn">Attack</button>
             <button id="boss">Final Battle</button>
