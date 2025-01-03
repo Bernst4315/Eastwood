@@ -3,7 +3,8 @@
 const battleBtn = document.querySelector("#battle-btn"); 
 const attBtn = document.querySelector("#att-btn"); 
 const boss = document.getElementById("boss");
-let runBtn = document.getElementById("run");
+const runBtn = document.getElementById("run");
+const restBtn = document.getElementById("rest-btn");
 let inBattle = false; 
 
 const mainChar = {
@@ -20,6 +21,14 @@ const monster = {
     hp: 5,
     attack: 1,
 }
+
+restBtn.addEventListener("click", () => {
+    if(mainChar.hp < mainChar.baseHp){
+        alert("Joshua: Looks like you need some rest. Come inside and refresh yourself")
+    }else {
+        alert("You're feeling fine, no need to rest")
+    }
+})
 
 battleBtn.addEventListener("click", () => {
 
