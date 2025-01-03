@@ -25,7 +25,19 @@ battleBtn.addEventListener("click", () => {
 
 attBtn.addEventListener("click", () => {
     if(inBattle){
-    alert("You attacked");
+
+        const creature = monster; 
+
+        alert("You attacked");
+        creature.hp -= mainChar.attack;
+        alert(`${creature.name} attacked back!`);
+        mainChar.hp -= creature.attack;
+        console.log(`${creature.name} health is at ${creature.hp}`);
+        console.log(`your health is at ${mainChar.hp}`);
+    if(creature.hp === 0){
+        alert("you Won")
+        inBattle = false; 
+    }
     }else {
         alert("There's nothing there silly");
     }
