@@ -22,13 +22,15 @@ battleBtn.addEventListener("click", () => {
     inBattle = true; 
     console.log(`${mainChar.name} vs ${monster.name}`);
 })
+let creature = {...monster};
 
 attBtn.addEventListener("click", () => {
     if(inBattle){
 
-        const creature = monster; 
+     
 
         alert("You attacked");
+        console.log(creature.hp)
         creature.hp -= mainChar.attack;
         alert(`${creature.name} attacked back!`);
         mainChar.hp -= creature.attack;
@@ -37,6 +39,7 @@ attBtn.addEventListener("click", () => {
     if(creature.hp === 0){
         alert("you Won")
         inBattle = false; 
+        creature = {...monster};
     }
     }else {
         alert("There's nothing there silly");
