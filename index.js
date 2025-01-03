@@ -2,6 +2,7 @@
 // alert("The Eastwood is known for it's monsters and people tend to avoid it");
 const battleBtn = document.querySelector("#battle-btn"); 
 const attBtn = document.querySelector("#att-btn"); 
+const boss = document.getElementById("boss")
 let inBattle = false; 
 const mainChar = {
     name: "Adam",
@@ -23,6 +24,7 @@ battleBtn.addEventListener("click", () => {
     console.log(`${mainChar.name} vs ${monster.name}`);
 })
 let creature = {...monster};
+let currentChar = {...mainChar}
 
 attBtn.addEventListener("click", () => {
     if(inBattle){
@@ -31,17 +33,35 @@ attBtn.addEventListener("click", () => {
 
         alert("You attacked");
         console.log(creature.hp)
-        creature.hp -= mainChar.attack;
+        creature.hp -= currentChar.attack;
         alert(`${creature.name} attacked back!`);
-        mainChar.hp -= creature.attack;
+        currentChar.hp -= creature.attack;
         console.log(`${creature.name} health is at ${creature.hp}`);
-        console.log(`your health is at ${mainChar.hp}`);
-    if(creature.hp === 0){
-        alert("you Won")
-        inBattle = false; 
-        creature = {...monster};
-    }
+        console.log(`your health is at ${currentChar.hp}`);
+        
+        if(creature.hp <= 0){
+            alert("you Won")
+            inBattle = false; 
+            creature = {...monster};
+            mainChar.level ++;
+            mainChar.hp ++;
+            mainChar.attack ++;
+            currentChar = {...mainChar}
+            console.log(mainChar.level)
+        }
+
     }else {
         alert("There's nothing there silly");
     }
+})
+
+boss.addEventListener("click", () => {
+    if(mainChar.level < 5){
+        alert("You're not strong enough")
+    }else{
+        alert("After months of training, you return to West Town a defeat the Serpent Knight")
+        alert("You are awarded the kingdom's treasure the fabled golden apple with the inscription 'To the Kalos'")
+        alert("Huh.... I wonder what that means?")
+    }
+    
 })
