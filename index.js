@@ -2,7 +2,8 @@
 // alert("The Eastwood is known for it's monsters and people tend to avoid it");
 const battleBtn = document.querySelector("#battle-btn"); 
 const attBtn = document.querySelector("#att-btn"); 
-const boss = document.getElementById("boss")
+const boss = document.getElementById("boss");
+let runBtn = document.getElementById("run");
 let inBattle = false; 
 
 const mainChar = {
@@ -21,9 +22,14 @@ const monster = {
 }
 
 battleBtn.addEventListener("click", () => {
-    alert("you started a battle");
+
+    if(inBattle) {
+        alert("You're already in a fight");
+    }else{
+    alert("you encountered a monster"); 
     inBattle = true; 
     console.log(`${mainChar.name} vs ${monster.name}`);
+    }
 })
 let creature = {...monster};
 let currentChar = {...mainChar}
@@ -35,11 +41,11 @@ attBtn.addEventListener("click", () => {
 
         alert("You attacked");
         console.log(creature.hp)
-        creature.hp -= currentChar.attack;
+        creature.hp -= mainChar.attack;
         alert(`${creature.name} attacked back!`);
-        currentChar.hp -= creature.attack;
+        mainChar.hp -= creature.attack;
         console.log(`${creature.name} health is at ${creature.hp}`);
-        console.log(`your health is at ${currentChar.hp}`);
+        console.log(`your health is at ${mainChar.hp}`);
         
         if(creature.hp <= 0){
             alert("you Won")
@@ -54,6 +60,15 @@ attBtn.addEventListener("click", () => {
 
     }else {
         alert("There's nothing there silly");
+    }
+})
+
+runBtn.addEventListener("click", () => {
+    if(inBattle){
+        inBattle = false;
+        alert("You ran away")
+    }else{
+        alert("What?... Scared of you're own shadow?")
     }
 })
 
