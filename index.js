@@ -1,6 +1,8 @@
-// alert("After a humiliating defeat in the West Town tournament at the hands of your rival, you train in the Eastwood forest");
+// alert("After a humiliating defeat in the West Town tournament at the hands of your rival the Serpent Knight, you train in the Eastwood forest");
 // alert("The Eastwood is known for it's monsters and people tend to avoid it");
-const battleBtn = document.querySelector("button");  
+const battleBtn = document.querySelector("#battle-btn"); 
+const attBtn = document.querySelector("#att-btn"); 
+let inBattle = false; 
 const mainChar = {
     name: "Adam",
     level: 1,
@@ -16,5 +18,15 @@ const monster = {
 }
 
 battleBtn.addEventListener("click", () => {
-    alert("you attacked");
+    alert("you started a battle");
+    inBattle = true; 
+    console.log(`${mainChar.name} vs ${monster.name}`);
+})
+
+attBtn.addEventListener("click", () => {
+    if(inBattle){
+    alert("You attacked");
+    }else {
+        alert("There's nothing there silly");
+    }
 })
