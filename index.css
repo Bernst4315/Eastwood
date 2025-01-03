@@ -9,6 +9,7 @@
     position: absolute;
     left: 100px;
     top: 200px;
+    color: white;
 }
 
 #opponet {
@@ -18,6 +19,7 @@
     position: absolute;
     left: 900px;
     top: 200px; 
+    color: crimson; 
     
 }
 
