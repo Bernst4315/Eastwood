@@ -6,6 +6,10 @@ const boss = document.getElementById("boss");
 const runBtn = document.getElementById("run");
 const restBtn = document.getElementById("rest-btn");
 let inBattle = false; 
+const heroHp = document.getElementById("hero-hp");
+const enemyHp = document.getElementById("enemy-hp");
+const heroLvl = document.getElementById("hero-lvl");
+const enemyLvl = document.getElementById("enemy-lvl");
 
 const mainChar = {
     name: "Adam",
@@ -22,14 +26,20 @@ const monster = {
     attack: 1,
 }
 
+let creature = {...monster};
+
+//Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
     if(mainChar.hp < mainChar.baseHp){
         alert("Joshua: Looks like you need some rest. Come inside and refresh yourself")
+        mainChar.hp = mainChar.baseHp;
+        heroHp.textContent = "HP: " + mainChar.hp
     }else {
         alert("You're feeling fine, no need to rest")
     }
 })
 
+//Initiates a battle
 battleBtn.addEventListener("click", () => {
 
     if(inBattle) {
@@ -37,17 +47,21 @@ battleBtn.addEventListener("click", () => {
     }else{
     alert("you encountered a monster"); 
     inBattle = true; 
+    enemyLvl.textContent += creature.level; 
+    enemyHp.textContent = "HP: " + creature.hp
     console.log(`${mainChar.name} vs ${monster.name}`);
     }
 })
-let creature = {...monster};
-let currentChar = {...mainChar}
+
+//let currentChar = {...mainChar}
+
+heroHp.textContent = "HP: " + mainChar.hp;
+heroLvl.textContent = "Lvl: " + mainChar.level;
+
 
 attBtn.addEventListener("click", () => {
+
     if(inBattle){
-
-     
-
         alert("You attacked");
         console.log(creature.hp)
         creature.hp -= mainChar.attack;
@@ -55,6 +69,8 @@ attBtn.addEventListener("click", () => {
         mainChar.hp -= creature.attack;
         console.log(`${creature.name} health is at ${creature.hp}`);
         console.log(`your health is at ${mainChar.hp}`);
+        heroHp.textContent = "HP: " + mainChar.hp
+        enemyHp.textContent = "HP: " + creature.hp
         
         if(creature.hp <= 0){
             alert("you Won")
@@ -63,7 +79,7 @@ attBtn.addEventListener("click", () => {
             mainChar.level ++;
             mainChar.baseHp ++;
             mainChar.attack ++;
-            currentChar = {...mainChar}
+            //currentChar = {...mainChar}
             console.log(mainChar.level)
         }
 
@@ -83,7 +99,9 @@ runBtn.addEventListener("click", () => {
 
 boss.addEventListener("click", () => {
     if(mainChar.level < 5){
-        alert("You're not strong enough")
+        alert("Joshua: You're not strong enough, you shouldn't fight him yet")
+        let proceed = confirm("Do you wish to continue?")
+        if(proceed) alert("You failed")
     }else{
         alert("After months of training, you return to West Town a defeat the Serpent Knight")
         alert("You are awarded the town's treasure the fabled apple of solid gold with the inscription 'Te Kalliste'")

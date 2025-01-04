@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Eastwood</title>
+    <title>Warrior of Edenton</title>
 </head>
 <body>  
     <div id="game-display">
@@ -12,23 +12,25 @@
         <div id="main-char">
             <h1>Adam</h1>
             <div id="hero-stats">
-                <h3>HP: </h3>
+                <h3 id="hero-lvl">Level: </h3>
+                <h3 id="hero-hp">HP: </h3>
                 <img src="knight.jpg" alt="image of a knight" id="knight">
             </div>
         </div>
         <div id="opponet">
             <h1>Creature</h1>
             <div id="creature-stats">
-                <h3>HP: </h3>
+                <h3 id="enemy-lvl">Level: </h3>
+                <h3 id="enemy-hp">HP: </h3>
                 <img src="snake.jpg" alt="image of a snake" id="snake">
             </div>
         </div>
         <nav>
-            <button id="rest-btn">Rest</button>
-            <button id="battle-btn">Battle</button>
-            <button id="att-btn">Attack</button>
-            <button id="run">Run</button>
-            <button id="boss">Final Battle</button>
+            <button class="btn" id="rest-btn">Rest</button>
+            <button class="btn" id="battle-btn">Battle</button>
+            <button class="btn" id="att-btn">Attack</button>
+            <button class="btn" id="run">Run</button>
+            <button class="btn" id="boss">Final Battle</button>
         </nav>
     </div>
     <script src="index.js"></script>

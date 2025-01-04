@@ -37,6 +37,12 @@ nav {
     background-color: #2a3e2c;
 }
 
+.btn {
+    margin: 5px;
+    padding: 5px 10px;
+    /* background-color: #2a7864; */
+}
+
 #hero-stats, #creature-stats {
     border: 1px solid red; 
 }
