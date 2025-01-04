@@ -10,6 +10,8 @@ const heroHp = document.getElementById("hero-hp");
 const enemyHp = document.getElementById("enemy-hp");
 const heroLvl = document.getElementById("hero-lvl");
 const enemyLvl = document.getElementById("enemy-lvl");
+let img = document.createElement("img");
+const enemeyStats = document.getElementById("creature-stats")
 
 const mainChar = {
     name: "Adam",
@@ -47,6 +49,8 @@ battleBtn.addEventListener("click", () => {
     }else{
     alert("you encountered a monster"); 
     inBattle = true; 
+    img.src = "snake.jpg";
+    enemeyStats.appendChild(img);    
     enemyLvl.textContent += creature.level; 
     enemyHp.textContent = "HP: " + creature.hp
     console.log(`${mainChar.name} vs ${monster.name}`);
