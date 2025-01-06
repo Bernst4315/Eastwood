@@ -15,7 +15,7 @@ const heroLvl = document.getElementById("hero-lvl");
 const enemyLvl = document.getElementById("enemy-lvl");
 let img = document.createElement("img");
 const enemeyStats = document.getElementById("creature-stats");
-//let alive = true; 
+let alive = true; 
 
 const mainChar = {
     name: "Adam",
@@ -29,14 +29,14 @@ const monster = {
     name: "Creature",
     level:1,
     hp: 5,
-    attack: 10,
+    attack: 1,
 }
 
 let creature = {...monster};
 
 //Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
-    //if(alive){
+    if(alive){
     if(mainChar.hp < mainChar.baseHp){
         alert("Joshua: Looks like you need some rest. Come inside and refresh yourself");
         mainChar.hp = mainChar.baseHp;
@@ -44,12 +44,12 @@ restBtn.addEventListener("click", () => {
     }else {
         alert("You're feeling fine, no need to rest");
     }
-    //}
+    }
 })
 
 //Initiates a battle
 battleBtn.addEventListener("click", () => {
-    //if(alive){
+    if(alive){
     if(inBattle) {
         alert("You're already in a fight");
     }else{
@@ -62,7 +62,7 @@ battleBtn.addEventListener("click", () => {
     enemyLvl.textContent += creature.level; 
     enemyHp.textContent = "HP: " + creature.hp;
     console.log(`${mainChar.name} vs ${monster.name}`);
-    //}
+    }
     }
 })
 
@@ -125,6 +125,7 @@ runBtn.addEventListener("click", () => {
 })
 
 boss.addEventListener("click", () => {
+    if(alive){
     if(mainChar.level < 5){
         alert("Joshua: You're not strong enough, you shouldn't fight him yet")
         let proceed = confirm("Do you wish to continue?")
@@ -134,5 +135,5 @@ boss.addEventListener("click", () => {
         alert("Mayor Peleus in gratitude gives you a valuable treasure that he had received as a wedding gift. A golden apple with the inscription 'Ti Kallisti'.")
         alert("Huh.... I wonder what that means?")
     }
-    
+    }
 })
