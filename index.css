@@ -5,7 +5,7 @@
 #main-char {
     width: 500px;
     height: 575px;
-    border: 1px solid aqua;
+    /* border: 1px solid aqua; */
     position: absolute;
     left: 100px;
     top: 200px;
@@ -15,7 +15,7 @@
 #opponet {
     width: 500px;
     height: 575px;
-    border: 1px solid lightcoral;
+    /* border: 1px solid lightcoral; */
     position: absolute;
     left: 900px;
     top: 200px; 
@@ -44,7 +44,7 @@ nav {
 }
 
 #hero-stats, #creature-stats {
-    border: 1px solid red; 
+    /* border: 1px solid red;  */
 }
 
 #knight{

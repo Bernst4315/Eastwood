@@ -13,7 +13,7 @@ const enemyHp = document.getElementById("enemy-hp");
 const heroLvl = document.getElementById("hero-lvl");
 const enemyLvl = document.getElementById("enemy-lvl");
 let img = document.createElement("img");
-const enemeyStats = document.getElementById("creature-stats")
+const enemeyStats = document.getElementById("creature-stats");
 
 const mainChar = {
     name: "Adam",
@@ -35,11 +35,11 @@ let creature = {...monster};
 //Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
     if(mainChar.hp < mainChar.baseHp){
-        alert("Joshua: Looks like you need some rest. Come inside and refresh yourself")
+        alert("Joshua: Looks like you need some rest. Come inside and refresh yourself");
         mainChar.hp = mainChar.baseHp;
         heroHp.textContent = "HP: " + mainChar.hp
     }else {
-        alert("You're feeling fine, no need to rest")
+        alert("You're feeling fine, no need to rest");
     }
 })
 
@@ -52,10 +52,11 @@ battleBtn.addEventListener("click", () => {
     alert("you encountered a monster"); 
     inBattle = true; 
     img.src = "snake.jpg";
-    img.id = "snake"
+    img.id = "snake";
+    //will eventually like to add an array of monsters to make encounters more interesting, maybe have level scaling
     enemeyStats.appendChild(img);    
     enemyLvl.textContent += creature.level; 
-    enemyHp.textContent = "HP: " + creature.hp
+    enemyHp.textContent = "HP: " + creature.hp;
     console.log(`${mainChar.name} vs ${monster.name}`);
     }
 })
@@ -70,17 +71,18 @@ attBtn.addEventListener("click", () => {
 
     if(inBattle){
         alert("You attacked");
-        console.log(creature.hp)
+        console.log(creature.hp);
         creature.hp -= mainChar.attack;
         alert(`${creature.name} attacked back!`);
         mainChar.hp -= creature.attack;
         console.log(`${creature.name} health is at ${creature.hp}`);
         console.log(`your health is at ${mainChar.hp}`);
-        heroHp.textContent = "HP: " + mainChar.hp
-        enemyHp.textContent = "HP: " + creature.hp
+        heroHp.textContent = "HP: " + mainChar.hp;
+        enemyHp.textContent = "HP: " + creature.hp;
         
         if(creature.hp <= 0){
-            alert("you Won")
+            alert("you Won");
+            enemeyStats.removeChild("img");
             inBattle = false; 
             creature = {...monster};
             mainChar.level ++;
@@ -98,8 +100,12 @@ attBtn.addEventListener("click", () => {
 
 runBtn.addEventListener("click", () => {
     if(inBattle){
+        
+        alert("You ran away");
+        enemeyStats.removeChild("img");
+        enemyHp.textContent = "HP: ";
+        enemyLvl.textContent = "Level: ";//not working for some reason
         inBattle = false;
-        alert("You ran away")
         //need to clear creature stats. since this occurs twice consider putting it into a function
     }else{
         alert("What?... Scared of you're own shadow?")
