@@ -22,14 +22,14 @@ const mainChar = {
     level: 1,
     hp: 10,
     baseHp: 10,
-    attack: 5,
+    attack: 1,
 };
 
 const monster = {
     name: "Creature",
     level:1,
     hp: 5,
-    attack: 1,
+    attack: 10,
 }
 
 let creature = {...monster};
@@ -86,11 +86,11 @@ attBtn.addEventListener("click", () => {
         heroHp.textContent = "HP: " + mainChar.hp;
         enemyHp.textContent = "HP: " + creature.hp;
 
-        // if(mainChar.hp <= 0){
-        //     alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
-        //     inBattle =false;
-        //     alive = false;
-        // }
+        if(mainChar.hp <= 0){
+            alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
+            inBattle =false;
+            alive = false;
+        }
         
         if(creature.hp <= 0){
             alert("you Won");
