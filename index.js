@@ -1,6 +1,6 @@
 alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
 alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
-alert("You couldn’t hold them back an was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
+alert("You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
 alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
 
 const battleBtn = document.querySelector("#battle-btn"); 
@@ -117,7 +117,7 @@ boss.addEventListener("click", () => {
     if(mainChar.level < 5){
         alert("Joshua: You're not strong enough, you shouldn't fight him yet")
         let proceed = confirm("Do you wish to continue?")
-        if(proceed) alert("Bad Ending: Sadly, you were not strong enough to defeat the Draco knight. As a result, you were taken into captivity and, along with Eva, were taken to the Draco Knight’s kingdom in the far east. ")
+        if(proceed) alert("Bad Ending: Sadly, you were not strong enough to defeat the Draco knight. As a result, you were taken into captivity and, along with Eva, the mayor, and the citizens of the town, were taken to the Draco Knight’s kingdom in the far east. ")
     }else{
         alert("The months of training in the woods finally paid off! You beat back the Draco Knight and rescued Eva.")
         alert("Mayor Peleus in gratitude gives you a valuable treasure that he had received as a wedding gift. A golden apple with the inscription 'Ti Kallisti'.")
