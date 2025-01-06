@@ -1,5 +1,7 @@
-// alert("After a humiliating defeat in the West Town tournament at the hands of your rival the Serpent Knight, you train in the Eastwood forest");
-// alert("The Eastwood is known for it's monsters and people tend to avoid it");
+// alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
+// alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
+// alert("You couldn’t hold them back an was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
+//alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
 const battleBtn = document.querySelector("#battle-btn"); 
 const attBtn = document.querySelector("#att-btn"); 
 const boss = document.getElementById("boss");
@@ -85,6 +87,7 @@ attBtn.addEventListener("click", () => {
             mainChar.attack ++;
             //currentChar = {...mainChar}
             console.log(mainChar.level)
+            //need to clear creature stats
         }
 
     }else {
@@ -96,6 +99,7 @@ runBtn.addEventListener("click", () => {
     if(inBattle){
         inBattle = false;
         alert("You ran away")
+        //need to clear creature stats. since this occurs twice consider putting it into a function
     }else{
         alert("What?... Scared of you're own shadow?")
     }
@@ -105,10 +109,10 @@ boss.addEventListener("click", () => {
     if(mainChar.level < 5){
         alert("Joshua: You're not strong enough, you shouldn't fight him yet")
         let proceed = confirm("Do you wish to continue?")
-        if(proceed) alert("You failed")
+        if(proceed) alert("Bad Ending: Sadly, you were not strong enough to defeat the Draco knight. As a result, you were taken into captivity and, along with Eva, were taken to the Draco Knight’s kingdom in the far east. ")
     }else{
-        alert("After months of training, you return to West Town a defeat the Serpent Knight")
-        alert("You are awarded the town's treasure the fabled apple of solid gold with the inscription 'Te Kalliste'")
+        alert("The months of training in the woods finally paid off! You beat back the Draco Knight and rescued Eva.")
+        alert("Mayor Peleus in gratitude gives you a valuable treasure that he had received as a wedding gift. A golden apple with the inscription 'Ti Kallisti'.")
         alert("Huh.... I wonder what that means?")
     }
     
