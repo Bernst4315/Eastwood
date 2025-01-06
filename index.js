@@ -36,7 +36,7 @@ let creature = {...monster};
 
 //Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
-    if(alive){
+    //if(alive){
     if(mainChar.hp < mainChar.baseHp){
         alert("Joshua: Looks like you need some rest. Come inside and refresh yourself");
         mainChar.hp = mainChar.baseHp;
@@ -44,12 +44,12 @@ restBtn.addEventListener("click", () => {
     }else {
         alert("You're feeling fine, no need to rest");
     }
-    }
+    //}
 })
 
 //Initiates a battle
 battleBtn.addEventListener("click", () => {
-    if(alive){
+    //if(alive){
     if(inBattle) {
         alert("You're already in a fight");
     }else{
@@ -62,7 +62,7 @@ battleBtn.addEventListener("click", () => {
     enemyLvl.textContent += creature.level; 
     enemyHp.textContent = "HP: " + creature.hp;
     console.log(`${mainChar.name} vs ${monster.name}`);
-    }
+    //}
     }
 })
 
@@ -85,11 +85,11 @@ attBtn.addEventListener("click", () => {
         heroHp.textContent = "HP: " + mainChar.hp;
         enemyHp.textContent = "HP: " + creature.hp;
 
-        if(mainChar.hp <= 0){
-            alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
-            inBattle =false;
-            alive = false;
-        }
+        // if(mainChar.hp <= 0){
+        //     alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
+        //     inBattle =false;
+        //     alive = false;
+        // }
         
         if(creature.hp <= 0){
             alert("you Won");
