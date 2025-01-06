@@ -1,7 +1,7 @@
-alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
-alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
-alert("You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
-alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
+// alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
+// alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
+// alert("You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
+// alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
 
 const battleBtn = document.querySelector("#battle-btn"); 
 const attBtn = document.querySelector("#att-btn"); 
@@ -15,14 +15,14 @@ const heroLvl = document.getElementById("hero-lvl");
 const enemyLvl = document.getElementById("enemy-lvl");
 let img = document.createElement("img");
 const enemeyStats = document.getElementById("creature-stats");
-let alive = true; 
+//let alive = true; 
 
 const mainChar = {
     name: "Adam",
     level: 1,
     hp: 10,
     baseHp: 10,
-    attack: 1,
+    attack: 5,
 };
 
 const monster = {
@@ -75,13 +75,14 @@ heroLvl.textContent = "Lvl: " + mainChar.level;
 attBtn.addEventListener("click", () => {
 
     if(inBattle){
+        
         alert("You attacked");
-        console.log(creature.hp);
+        //console.log(creature.hp);
         creature.hp -= mainChar.attack;
         alert(`${creature.name} attacked back!`);
         mainChar.hp -= creature.attack;
-        console.log(`${creature.name} health is at ${creature.hp}`);
-        console.log(`your health is at ${mainChar.hp}`);
+        //console.log(`${creature.name} health is at ${creature.hp}`);
+        //console.log(`your health is at ${mainChar.hp}`);
         heroHp.textContent = "HP: " + mainChar.hp;
         enemyHp.textContent = "HP: " + creature.hp;
 
@@ -93,12 +94,13 @@ attBtn.addEventListener("click", () => {
         
         if(creature.hp <= 0){
             alert("you Won");
-            enemeyStats.removeChild("img");
+            img.src="";
             inBattle = false; 
             creature = {...monster};
             mainChar.level ++;
             mainChar.baseHp ++;
             mainChar.attack ++;
+            heroLvl.textContent = "Level: " + mainChar.level;
             //currentChar = {...mainChar}
             console.log(mainChar.level)
             //need to clear creature stats
@@ -113,11 +115,10 @@ runBtn.addEventListener("click", () => {
     if(inBattle){
         
         alert("You ran away");
-        enemeyStats.removeChild("img");
+        img.src="0";
         enemyHp.textContent = "HP: ";
         enemyLvl.textContent = "Level: ";//not working for some reason
         inBattle = false;
-        //need to clear creature stats. since this occurs twice consider putting it into a function
     }else{
         alert("What?... Scared of you're own shadow?")
     }
