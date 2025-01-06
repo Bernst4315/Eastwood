@@ -52,6 +52,7 @@ battleBtn.addEventListener("click", () => {
     alert("you encountered a monster"); 
     inBattle = true; 
     img.src = "snake.jpg";
+    img.id = "snake"
     enemeyStats.appendChild(img);    
     enemyLvl.textContent += creature.level; 
     enemyHp.textContent = "HP: " + creature.hp
