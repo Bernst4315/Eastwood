@@ -28,7 +28,7 @@ class GameCharacter{
 
 class Person extends GameCharacter {
     constructor(name, baseHp){
-        super("name", 1, 10, 1);
+        super(name, 1, 10, 1);
         this.baseHp = baseHp;
     }
 } 
