@@ -17,22 +17,32 @@ let img = document.createElement("img");
 const enemeyStats = document.getElementById("creature-stats");
 let alive = true; 
 
-const mainChar = {
-    name: "Adam",
-    level: 1,
-    hp: 10,
-    baseHp: 10,
-    attack: 1,
-};
-
-const monster = {
-    name: "Creature",
-    level:1,
-    hp: 5,
-    attack: 1,
+class GameCharacter{
+    constructor(name, level, hp, attack){
+           this.name = name;
+           this.level = level;
+           this.hp = hp;
+           this.attack = attack;
+    }
 }
 
-let creature = {...monster};
+class Person extends GameCharacter {
+    constructor(name, baseHp){
+        super("name", 1, 10, 1);
+        this.baseHp = baseHp;
+    }
+} 
+
+class Monster extends GameCharacter{
+    constructor(name){
+        super(name, 1,5,1)
+    }
+};
+
+const mainChar = new Person("Adam", 10); 
+const snake = new Monster("Snake");
+
+let creature = {...snake};
 
 //Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
@@ -61,7 +71,7 @@ battleBtn.addEventListener("click", () => {
     enemeyStats.appendChild(img);    
     enemyLvl.textContent += creature.level; 
     enemyHp.textContent = "HP: " + creature.hp;
-    console.log(`${mainChar.name} vs ${monster.name}`);
+    console.log(`${mainChar.name} vs ${snake.name}`); //can add as a header for when battle starts; 
     }
     }
 })
@@ -117,7 +127,7 @@ runBtn.addEventListener("click", () => {
         alert("You ran away");
         img.src="0";
         enemyHp.textContent = "HP: ";
-        enemyLvl.textContent = "Level: ";//not working for some reason
+        enemyLvl.textContent = "Level: ";
         inBattle = false;
     }else{
         alert("What?... Scared of you're own shadow?")
