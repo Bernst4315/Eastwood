@@ -89,24 +89,13 @@ attBtn.addEventListener("click", () => {
         alert("You attacked");
         //console.log(creature.hp);
         creature.hp -= mainChar.attack;
-        alert(`${creature.name} attacked back!`);
-        mainChar.hp -= creature.attack;
-        //console.log(`${creature.name} health is at ${creature.hp}`);
-        //console.log(`your health is at ${mainChar.hp}`);
-        heroHp.textContent = "HP: " + mainChar.hp;
         enemyHp.textContent = "HP: " + creature.hp;
 
-        if(mainChar.hp <= 0){
-            alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
-            inBattle =false;
-            alive = false;
-        }
-        
         if(creature.hp <= 0){
             alert("you Won");
             img.src="";
             inBattle = false; 
-            creature = {...monster};
+            //creature = {...monster};
             mainChar.level ++;
             mainChar.baseHp ++;
             mainChar.attack ++;
@@ -114,7 +103,22 @@ attBtn.addEventListener("click", () => {
             //currentChar = {...mainChar}
             console.log(mainChar.level)
             //need to clear creature stats
+        }else{
+            alert(`${creature.name} attacked back!`);
+            mainChar.hp -= creature.attack; 
         }
+
+     
+   
+        heroHp.textContent = "HP: " + mainChar.hp;
+        
+
+        if(mainChar.hp <= 0){
+            alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
+            inBattle =false;
+            alive = false;
+        }
+        
 
     }else {
         alert("There's nothing there silly");
