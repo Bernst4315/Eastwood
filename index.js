@@ -8,14 +8,18 @@ const attBtn = document.querySelector("#att-btn");
 const boss = document.getElementById("boss");
 const runBtn = document.getElementById("run");
 const restBtn = document.getElementById("rest-btn");
-let inBattle = false; 
 const heroHp = document.getElementById("hero-hp");
-const enemyHp = document.getElementById("enemy-hp");
+
 const heroLvl = document.getElementById("hero-lvl");
-const enemyLvl = document.getElementById("enemy-lvl");
 let img = document.createElement("img");
-const enemeyStats = document.getElementById("creature-stats");
+
+const enemeyStats = document.getElementById("enemy-stats");
+const enemyName = document.getElementById("enemy-name");
+const enemyLvl = document.getElementById("enemy-lvl");
+const enemyHp = document.getElementById("enemy-hp");
+
 let alive = true; 
+let inBattle = false; 
 
 class GameCharacter{
     constructor(name, level, hp, attack){
@@ -41,8 +45,12 @@ class Monster extends GameCharacter{
 
 const mainChar = new Person("Adam", 10); 
 const snake = new Monster("Snake");
+const satyr = new Monster("Satyr") 
 
-let creature = {...snake};
+const monsterArr = []; 
+
+//let creature = {...satyr};
+let monster = {...satyr};
 
 //Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
@@ -65,13 +73,18 @@ battleBtn.addEventListener("click", () => {
     }else{
     alert("you encountered a monster"); 
     inBattle = true; 
-    img.src = "snake.jpg";
-    img.id = "snake";
-    //will eventually like to add an array of monsters to make encounters more interesting, maybe have level scaling
-    enemeyStats.appendChild(img);    
-    enemyLvl.textContent += creature.level; 
-    enemyHp.textContent = "HP: " + creature.hp;
-    console.log(`${mainChar.name} vs ${snake.name}`); //can add as a header for when battle starts; 
+
+    loadEnemy(monster)
+    // img.src = `${creature.name}.jpg`;
+    // img.id = "enemy-img";
+    // img.alt= "Image of an enemy"
+    // //will eventually like to add an array of monsters to make encounters more interesting, maybe have level scaling
+    // enemeyStats.appendChild(img); 
+    // enemyName.textContent = creature.name;   
+    // enemyLvl.textContent = `Level: ${creature.level}`; 
+    // enemyHp.textContent = `HP: ${creature.hp}`;
+
+    console.log(`${mainChar.name} vs ${creature.name}`); //can add as a header for when battle starts; 
     }
     }
 })
@@ -81,7 +94,7 @@ battleBtn.addEventListener("click", () => {
 heroHp.textContent = "HP: " + mainChar.hp;
 heroLvl.textContent = "Lvl: " + mainChar.level;
 
-
+//Attack Button
 attBtn.addEventListener("click", () => {
 
     if(inBattle){
@@ -145,9 +158,22 @@ boss.addEventListener("click", () => {
         let proceed = confirm("Do you wish to continue?")
         if(proceed) alert("Bad Ending: Sadly, you were not strong enough to defeat the Draco knight. As a result, you were taken into captivity and, along with Eva, the mayor, and the citizens of the town, were taken to the Draco Knight’s kingdom in the far east. ")
     }else{
+        
+        
         alert("The months of training in the woods finally paid off! You beat back the Draco Knight and rescued Eva.")
         alert("Mayor Peleus in gratitude gives you a valuable treasure that he had received as a wedding gift. A golden apple with the inscription 'Ti Kallisti'.")
         alert("Huh.... I wonder what that means?")
     }
     }
 })
+
+function loadEnemy(creature){
+    img.src = `${creature.name}.jpg`;
+    img.id = "enemy-img";
+    img.alt= "Image of an enemy"
+    //will eventually like to add an array of monsters to make encounters more interesting, maybe have level scaling
+    enemeyStats.appendChild(img); 
+    enemyName.textContent = creature.name;   
+    enemyLvl.textContent = `Level: ${creature.level}`; 
+    enemyHp.textContent = `HP: ${creature.hp}`;
+}
