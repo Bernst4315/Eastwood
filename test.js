@@ -7,24 +7,21 @@ class GameCharacter{
     }
 }
 
-// class Person extends GameCharacter {
-//     constructor(name, baseHp){
-//         super(name, 1, 10, 1);
-//         this.baseHp = baseHp;
-//     }
-// } 
-
-// const adam = new Person("adam", 10); 
-
-// console.log(adam); 
-
-
 class Monster extends GameCharacter{
     constructor(name){
         super(name, 1,5,1)
     }
 };
 
-const snake = new Monster("snake"); 
+const snake = new Monster("Snake");
+const satyr = new Monster("Satyr");
 
-console.log(snake)
+const monsterArr = [snake,satyr];
+
+function monsterGen(){
+    let num = Math.round(Math.random())
+    genMonster = monsterArr[num]
+    return (genMonster);
+}
+
+console.log(monsterGen());

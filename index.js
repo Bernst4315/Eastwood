@@ -45,11 +45,10 @@ class Monster extends GameCharacter{
 
 const mainChar = new Person("Adam", 10); 
 const snake = new Monster("Snake");
-const satyr = new Monster("Satyr") 
+const satyr = new Monster("Satyr"); 
 
-const monsterArr = [snake]; 
-
-let monster = {...satyr};
+const monsterArr = [snake,satyr]; 
+//let monster = "";
 
 //Rest feature: Allows Player to restore health
 restBtn.addEventListener("click", () => {
@@ -70,8 +69,9 @@ battleBtn.addEventListener("click", () => {
     if(inBattle) {
         alert("You're already in a fight");
     }else{
-    alert("you encountered a monster"); 
-    loadEnemy(monster)
+    alert("you encountered a monster");
+    monster = monsterGen(); 
+    loadEnemy(monster) //what is in parentheses must be a var the stores the random monster that is generated
     //console.log(`${mainChar.name} vs ${monster.name}`); //can add as a header for when battle starts; 
     }
     }
@@ -165,4 +165,11 @@ function battleEnd() {
     enemyHp.textContent = "";
     enemyLvl.textContent = "";
     inBattle = false;
+}
+
+function monsterGen(){
+    let num = Math.round(Math.random())
+    let genM = monsterArr[num]
+    let genMonster = {...genM}
+    return (genMonster);
 }
