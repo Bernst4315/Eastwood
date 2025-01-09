@@ -1,7 +1,15 @@
-alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
-alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
-alert("You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
-alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
+alert(
+  "The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards."
+);
+alert(
+  "They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage."
+);
+alert(
+  "You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit."
+);
+alert(
+  "He takes you in, and after hearing of your plight he offers his help to train your skills"
+);
 
 const battleBtn = document.querySelector("#battle-btn");
 const attBtn = document.querySelector("#att-btn");
@@ -61,8 +69,7 @@ restBtn.addEventListener("click", () => {
         alert(
           "Joshua: Looks like you need some rest. Come inside and refresh yourself"
         );
-        mainChar.hp = mainChar.baseHp;
-        heroHp.textContent = "HP: " + mainChar.hp;
+        heal();
       } else {
         alert("You're feeling fine, no need to rest");
       }
@@ -196,10 +203,16 @@ function monsterGen() {
 }
 
 function finalBattle() {
+  heal();
   loadEnemy(dracoKnight);
   inBattle = false;
   monster = { ...dracoKnight };
   bossBattle = true;
+}
+
+function heal() {
+  mainChar.hp = mainChar.baseHp;
+  return (heroHp.textContent = "HP: " + mainChar.hp);
 }
 
 function endings(x) {
