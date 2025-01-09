@@ -1,7 +1,7 @@
-alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
-alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
-alert("You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
-alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
+// alert("The Draco Knight and his goons invaded the town of Edenton, an idyllic town known for its apple orchards.");
+// alert("They have taken the love of your life and mayor Peleus’ daughter, Eva, hostage.");
+// alert("You couldn’t hold them back and was unfortunately driven out of town. Fleeing to the nearby forest you meet Joshua the hermit.");
+// alert("He takes you in, and after hearing of your plight he offers his help to train your skills")
 
 const battleBtn = document.querySelector("#battle-btn"); 
 const attBtn = document.querySelector("#att-btn"); 
@@ -47,9 +47,8 @@ const mainChar = new Person("Adam", 10);
 const snake = new Monster("Snake");
 const satyr = new Monster("Satyr") 
 
-const monsterArr = []; 
+const monsterArr = [snake]; 
 
-//let creature = {...satyr};
 let monster = {...satyr};
 
 //Rest feature: Allows Player to restore health
@@ -72,19 +71,8 @@ battleBtn.addEventListener("click", () => {
         alert("You're already in a fight");
     }else{
     alert("you encountered a monster"); 
-    inBattle = true; 
-
     loadEnemy(monster)
-    // img.src = `${creature.name}.jpg`;
-    // img.id = "enemy-img";
-    // img.alt= "Image of an enemy"
-    // //will eventually like to add an array of monsters to make encounters more interesting, maybe have level scaling
-    // enemeyStats.appendChild(img); 
-    // enemyName.textContent = creature.name;   
-    // enemyLvl.textContent = `Level: ${creature.level}`; 
-    // enemyHp.textContent = `HP: ${creature.hp}`;
-
-    console.log(`${mainChar.name} vs ${creature.name}`); //can add as a header for when battle starts; 
+    //console.log(`${mainChar.name} vs ${monster.name}`); //can add as a header for when battle starts; 
     }
     }
 })
@@ -100,25 +88,20 @@ attBtn.addEventListener("click", () => {
     if(inBattle){
         
         alert("You attacked");
-        //console.log(creature.hp);
-        creature.hp -= mainChar.attack;
-        enemyHp.textContent = "HP: " + creature.hp;
+        monster.hp -= mainChar.attack;
+        enemyHp.textContent = "HP: " + monster.hp;
 
-        if(creature.hp <= 0){
+        if(monster.hp <= 0){
             alert("you Won");
-            img.src="";
-            inBattle = false; 
-            //creature = {...monster};
+            battleEnd();
             mainChar.level ++;
             mainChar.baseHp ++;
             mainChar.attack ++;
             heroLvl.textContent = "Level: " + mainChar.level;
-            //currentChar = {...mainChar}
-            console.log(mainChar.level)
-            //need to clear creature stats
+        
         }else{
-            alert(`${creature.name} attacked back!`);
-            mainChar.hp -= creature.attack; 
+            alert(`${monster.name} attacked back!`);
+            mainChar.hp -= monster.attack; 
         }
 
      
@@ -142,10 +125,7 @@ runBtn.addEventListener("click", () => {
     if(inBattle){
         
         alert("You ran away");
-        img.src="0";
-        enemyHp.textContent = "HP: ";
-        enemyLvl.textContent = "Level: ";
-        inBattle = false;
+        battleEnd()
     }else{
         alert("What?... Scared of you're own shadow?")
     }
@@ -168,12 +148,21 @@ boss.addEventListener("click", () => {
 })
 
 function loadEnemy(creature){
+    inBattle = true; 
     img.src = `${creature.name}.jpg`;
     img.id = "enemy-img";
     img.alt= "Image of an enemy"
-    //will eventually like to add an array of monsters to make encounters more interesting, maybe have level scaling
     enemeyStats.appendChild(img); 
     enemyName.textContent = creature.name;   
     enemyLvl.textContent = `Level: ${creature.level}`; 
     enemyHp.textContent = `HP: ${creature.hp}`;
+}
+
+function battleEnd() {
+    img.src="";
+    img.alt = "";
+    enemyName.textContent = ""; 
+    enemyHp.textContent = "";
+    enemyLvl.textContent = "";
+    inBattle = false;
 }
