@@ -19,7 +19,8 @@ const enemyLvl = document.getElementById("enemy-lvl");
 const enemyHp = document.getElementById("enemy-hp");
 
 let alive = true; 
-let inBattle = false; 
+let inBattle = false;
+let bossBattle = false; 
 
 class GameCharacter{
     constructor(name, level, hp, attack){
@@ -38,14 +39,15 @@ class Person extends GameCharacter {
 } 
 
 class Monster extends GameCharacter{
-    constructor(name){
-        super(name, 1,5,1)
+    constructor(name, level, hp , attack){
+        super(name, level, hp , attack)
     }
 };
 
 const mainChar = new Person("Adam", 10); 
-const snake = new Monster("Snake");
-const satyr = new Monster("Satyr"); 
+const snake = new Monster("Snake", 1, 5, 1);
+const satyr = new Monster("Satyr", 1, 5, 1); 
+const dracoKnight = new Monster("Draco Knight", 15, 5, 5)
 
 const monsterArr = [snake,satyr]; 
 //let monster = "";
@@ -110,14 +112,43 @@ attBtn.addEventListener("click", () => {
         
 
         if(mainChar.hp <= 0){
-            alert("You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
+            alert("Unfortunate End: You overexert yourself and suffer a fatal wound, Joshua finds you but it's too late")
             inBattle =false;
             alive = false;
         }
         
 
-    }else {
-        alert("There's nothing there silly");
+    }else if(bossBattle){
+        alert("You attacked");
+        monster.hp -= mainChar.attack;
+        enemyHp.textContent = "HP: " + monster.hp;
+
+        if(monster.hp <= 0){
+            alert("you Won");
+            alert("Draco Knight: Juno I have failed you!")
+            battleEnd();
+            // mainChar.level ++;
+            // mainChar.baseHp ++;
+            // mainChar.attack ++;
+            // heroLvl.textContent = "Level: " + mainChar.level;
+        
+        }else{
+            alert(`${monster.name} attacked back!`);
+            mainChar.hp -= monster.attack; 
+        }
+
+     
+   
+        heroHp.textContent = "HP: " + mainChar.hp;
+        
+
+        if(mainChar.hp <= 0){
+            alert("Bad Ending: Sadly, you were not strong enough to defeat the Draco knight. As a result, you were taken into captivity and, along with Eva, the mayor, and the citizens of the town, were taken to the Draco Knight’s kingdom in the far east. ")
+            bossBattle =false;
+            alive = false;
+        }
+    } else {
+            alert("There's nothing there silly");
     }
 })
 
@@ -126,6 +157,8 @@ runBtn.addEventListener("click", () => {
         
         alert("You ran away");
         battleEnd()
+    }else if(bossBattle){
+        alert("You can't run away!")
     }else{
         alert("What?... Scared of you're own shadow?")
     }
@@ -136,7 +169,13 @@ boss.addEventListener("click", () => {
     if(mainChar.level < 5){
         alert("Joshua: You're not strong enough, you shouldn't fight him yet")
         let proceed = confirm("Do you wish to continue?")
-        if(proceed) alert("Bad Ending: Sadly, you were not strong enough to defeat the Draco knight. As a result, you were taken into captivity and, along with Eva, the mayor, and the citizens of the town, were taken to the Draco Knight’s kingdom in the far east. ")
+        if(proceed){ 
+            finalBattle();
+            // loadEnemy(dracoKnight)
+            // monster = {...dracoKnight}; 
+        };
+
+            
     }else{
         
         
@@ -172,4 +211,11 @@ function monsterGen(){
     let genM = monsterArr[num]
     let genMonster = {...genM}
     return (genMonster);
+}
+
+function finalBattle(){
+    loadEnemy(dracoKnight)
+    inBattle = false; 
+    monster = {...dracoKnight};
+    bossBattle = true;
 }
